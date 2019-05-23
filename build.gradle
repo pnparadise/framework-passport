@@ -1,0 +1,38 @@
+plugins {
+    id "java"
+    id 'eclipse'
+    id 'idea'
+    id "io.freefair.lombok" version "3.6.4" apply false
+    id "org.zeroturnaround.gradle.jrebel" version "1.1.8" apply false
+    id "org.springframework.boot" version "2.1.5.RELEASE" apply false
+    id "io.spring.dependency-management" version "1.0.7.RELEASE" apply false
+}
+
+group 'com.passport'
+version '1.0-SNAPSHOT'
+
+subprojects {
+    ext {
+        springBootVersion = '2.1.5.RELEASE'
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: 'io.freefair.lombok'
+    apply plugin: 'org.zeroturnaround.gradle.jrebel'
+    apply plugin: 'io.spring.dependency-management'
+
+    group 'com.passport'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8 // java 8
+    targetCompatibility = 1.8
+
+    jar.dependsOn(generateRebel)
+
+    repositories {
+        maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        mavenCentral()
+    }
+}

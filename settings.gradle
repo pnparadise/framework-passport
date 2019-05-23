@@ -1,0 +1,5 @@
+rootProject.name = 'passport-aggregator'
+
+include 'passport-service'
+include 'passport-service-api'
+include 'passport-portal'
